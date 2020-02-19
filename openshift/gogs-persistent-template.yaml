@@ -238,12 +238,13 @@ objects:
     - name: "${GOGS_VERSION}"
       from:
         kind: DockerImage
-        name: docker.io/openshiftdemos/gogs:${GOGS_VERSION}
+        name: registry.lab.example.com/gogs/gogs:${GOGS_VERSION}
       importPolicy: {}
       annotations:
         description: The Gogs git server docker image
         tags: gogs,go,golang
         version: "${GOGS_VERSION}"
+            name: gogs-config
 - kind: PersistentVolumeClaim
   apiVersion: v1
   metadata:
@@ -316,7 +317,7 @@ parameters:
 - description: Volume space available for postregs data, e.g. 512Mi, 2Gi
   name: DB_VOLUME_CAPACITY
   required: true
-  value: 1Gi
+  value: 2Gi
 - displayName: Database Username
   from: gogs
   value: gogs
